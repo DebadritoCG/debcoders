@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %} Search Results {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h2 class="text-center">Search Results</h2>
+    {% if allPosts|length < 1 %} <div class="container">
+        <p>No search results.</p>
+
+        Your Search Query : <b>{{query}}</b> did not match any blog post.
+
+        Suggestions:
+        <ul>
+            <li>Try Different Keywords</li>
+            <li>Make sure that all words are spelled correctly.</li>
+            <li>Try more general keywords.</li>
+            <li>Try fewer keywords.</li>
+        </ul>
+        {% endif %}
+</div>
+{% for post in allPosts %}
+<div class="container my-3">
+    <div
+        class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-muted">{{post.timeStampt}}</div>
+            <p class="card-text mb-auto">{{post.content | truncatechars:100|safe}}</p>
+            <a href="/blogPost/{{post.sno}}" class="stretched-link">Continue reading</a>
+        </div>
+    </div>
+</div>
+{% endfor %}
+</div>
+
+{% endblock %}

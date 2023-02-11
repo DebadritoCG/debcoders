@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block blog_active %} active {% endblock %}
+{% block title %} Blogs {% endblock %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <h2 class="text-center">Blogs</h2>
+    {% for post in allPosts %}
+    <div class="container my-3">
+        <div
+            class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-0">{{post.title}}</h3>
+                <div class="mb-1 text-muted">{{post.timeStampt}}</div>
+                <p class="card-text mb-auto">{{post.content | truncatechars:100 | safe}}</p>
+                <a href="/blogPost/{{post.sno}}" class="stretched-link">Continue reading</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% block title %} Home {% endblock %}
+{% block home_active %} active {% endblock %}
+
+{% block content %}
+{% load static %}
+<div class="container">
+    <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'banner_image_1.jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>DebCoders</h5>
+                    <p>Welcome to DebCoders</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'banner_image_2.jfif' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>DebCoders</h5>
+                    <p>Welcome to DebCoders</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'banner_image_3.jpg' %}" class="d-block w-100" alt="...">
+                <div class="carousel-caption d-none d-md-block">
+                    <h5>DebCoders</h5>
+                    <p>Welcome to DebCoders</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+<br>
+<div class="container">
+    <h2 class="text-center">Latest BlogPost</h2>
+    <div class="container">
+        <div
+            class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 my-4 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+                <h3 class="mb-0">{{post.title}}</h3>
+                <div class="mb-1 text-muted">{{post.timeStampt}}</div>
+                <p class="card-text mb-auto">{{post.content | truncatechars:50 | safe}}</p>
+                <a href="/blogPost/{{post.sno}}" class="stretched-link">Continue reading</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
